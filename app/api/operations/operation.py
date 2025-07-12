@@ -7,7 +7,7 @@ class OperationsContabil(Interface):
     """
     
     @staticmethod
-    async def juros_simples(c:int | float, i:int | float, t:int | float) -> int | float | str:
+    async def juros_simples(c:int | float, i:int | float, t:int | float) -> dict | str:
         """_summary_
 
         Args:
@@ -16,17 +16,19 @@ class OperationsContabil(Interface):
             t (int | float): _description_
 
         Returns:
-            int | float | str: _description_
+            dict | str: _description_
         """
         try:
-            result = (c * (i / 100) * t)
-            return result
+            resultado_juros_simples = (c * (i / 100) * t)
+            return {
+                'resultado': resultado_juros_simples
+            }
         
         except Exception as e:
             return "error calculo(juros simpes)", e
         
     @staticmethod
-    async def juros_compostos(c:int | float, i: int| float, t: int | float) -> int | float | str:
+    async def juros_compostos(c:int | float, i: int| float, t: int | float) -> dict | str:
         """_summary_
 
         Args:
@@ -35,18 +37,20 @@ class OperationsContabil(Interface):
             t (int | float): _description_
 
         Returns:
-            int | float | str: _description_
+            dict | str: _description_
         """
         try:
-            result = c * (1 + (i / 100)) ** t
-            return result
+            resultado_juros_compostos = c * (1 + (i / 100)) ** t
+            return {
+                'resultado':resultado_juros_compostos
+                }
         
         except Exception as e:
             return "error calculo (juros compostos)", e
         
 
     @staticmethod
-    async def desconto_simples(N: int | float, i: int | float, t :int | float) -> int | float | str:
+    async def desconto_simples(N: int | float, i: int | float, t :int | float) -> dict | str:
         """_summary_
 
         Args:
@@ -55,18 +59,20 @@ class OperationsContabil(Interface):
             t (int | float): _description_
 
         Returns:
-            int | float | str: _description_
+            dict | str: _description_
         """
         try:
-            result = N * (i / 100) * t
-            return result
+            resultado_desconto_simples = N * (i / 100) * t
+            return {
+                'resulatdo':resultado_desconto_simples
+            }
         
         except Exception as e:
             return "erros calculo (desconto simples)", e
 
 
     @staticmethod
-    async def valor_presente(VF:int | float, i: int | float , n: int | float) -> int | float | str:
+    async def valor_presente(VF:int | float, i: int | float , n: int | float) -> dict | str:
         """_summary_
 
         Args:
@@ -75,18 +81,20 @@ class OperationsContabil(Interface):
             n (int | float): _description_
 
         Returns:
-            int | float | str: _description_
+            dict | str: _description_
         """
         try:
-            result = VF / (1 + (i / 100)) ** n
+            resultado_valor_presente = VF / (1 + (i / 100)) ** n
 
-            return result
+            return {
+                'resultado': resultado_valor_presente
+            }
         except Exception as e:
             return "Error calculo (valor presente)", e
         
 
     @staticmethod
-    async def valor_futuro(VP: int | float, i: int | float, n: int | float) -> int | float | str:
+    async def valor_futuro(VP: int | float, i: int | float, n: int | float) -> dict | str:
         """_summary_
 
         Args:
@@ -95,16 +103,18 @@ class OperationsContabil(Interface):
             n (int | float): _description_
 
         Returns:
-            int | float | str: _description_
+            dict | str: _description_
         """
         try:
-            result = VP * (1 + (i / 100)) ** n
-            return result
+            resultado_valor_futuro = VP * (1 + (i / 100)) ** n
+            return {
+                'resultado':resultado_valor_futuro
+                }
         except Exception as e:
             return "Error calculo (valor futuro)", e
         
     @staticmethod
-    async def margem_de_lucro(lucro: int | float, receita: int | float) -> int | float | str:
+    async def margem_de_lucro(lucro: int | float, receita: int | float) -> dict | str:
         """_summary_
 
         Args:
@@ -112,16 +122,18 @@ class OperationsContabil(Interface):
             receita (int | float): _description_
 
         Returns:
-            int | float | str: _description_
+            dict | str: _description_
         """
         try:
-            margem = (lucro / receita) * 100
-            return margem
+            resultado_margem_lucro = (lucro / receita) * 100
+            return {
+                'resultado': resultado_margem_lucro
+            }
         except Exception as e:
             return "Error calculo (margem de lucro)", e
         
     @staticmethod
-    async def custo_total(CF: int | float, custo_v: int | float) -> int | float | str:
+    async def custo_total(CF: int | float, custo_v: int | float) -> dict | str:
         """_summary_
 
         Args:
@@ -129,17 +141,20 @@ class OperationsContabil(Interface):
             custo_v (int | float): _description_
 
         Returns:
-            int | float | str: _description_
+            dict | str: _description_
         """
         try:
-            ct = CF + custo_v
-            return ct 
+            resultado_custo_total = CF + custo_v
+            return {
+                'resultado': resultado_custo_total
+            }
+        
         except Exception as e:
             return "Error calculo (custo total)", e
         
 
     @staticmethod 
-    async def depreciacao_linear(valor_aquisicao:int | float, valor_residual: int | float, vida_util: int) -> int | float | str:
+    async def depreciacao_linear(valor_aquisicao:int | float, valor_residual: int | float, vida_util: int) -> dict | str:
         """_summary_
 
         Args:
@@ -148,18 +163,20 @@ class OperationsContabil(Interface):
             vida_util (int): _description_
 
         Returns:
-            int | float | str: _description_
+            dict | str: _description_
         """
         try:
-            depreciacao = (valor_aquisicao - valor_residual) / vida_util
-            return depreciacao
+            resultado_depreciacao_linear = (valor_aquisicao - valor_residual) / vida_util
+            return {
+                'resutado': resultado_depreciacao_linear
+                }
         
         except Exception as e:
             "Error calculo (depreciacao linear)", e
 
 
     @staticmethod
-    async def ponto_de_equilibrio(cf: int | float, pv: int | float, custo_v: int | float ) -> int | float | str:
+    async def ponto_de_equilibrio(cf: int | float, pv: int | float, custo_v: int | float ) -> dict | str:
         """_summary_
 
         Args:
@@ -168,17 +185,20 @@ class OperationsContabil(Interface):
             custo_v (int | float): _description_
 
         Returns:
-            int | float | str: _description_
+            dict | str: _description_
         """
         try:
-            ponto_equilibrio = cf / (pv - custo_v)
-            return ponto_equilibrio
+            resultado_ponto_equilibrio = cf / (pv - custo_v)
+            return {
+                'resultado':resultado_ponto_equilibrio
+                }
+        
         except Exception as e:
             "Error calculo (ponto de equilibrio)", e
 
 
     @staticmethod
-    async def liquidez_corrente(ativo_circulante: int | float, passivo_circulante: int | float) -> int | float | str:
+    async def liquidez_corrente(ativo_circulante: int | float, passivo_circulante: int | float) -> dict | str:
         """_summary_
 
         Args:
@@ -186,11 +206,14 @@ class OperationsContabil(Interface):
             passivo_circulante (int | float): _description_
 
         Returns:
-            int | float | str: _description_
+            dict | str: _description_
         """
         try:
-            liquidez = ativo_circulante / passivo_circulante
-            return liquidez
+            resultado_liquidez_corrente = ativo_circulante / passivo_circulante
+            return {
+                'resultado': resultado_liquidez_corrente
+            }
         
         except Exception as e:
             return "Error calculo (liquidez corrente)", e
+        
