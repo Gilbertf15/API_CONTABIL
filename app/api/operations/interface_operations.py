@@ -3,41 +3,41 @@ from abc import ABC, abstractmethod
 class Interface(ABC):
 
     @abstractmethod
-    def juros_simples(self):
+    async def juros_simples():
         raise NotImplementedError("Método juros simples não implementado")
 
     @abstractmethod
-    def juros_compostos(self):
+    def juros_compostos():
         raise NotImplementedError("Método juros compostos não implementado")
 
     @abstractmethod
-    def desconto_simples(self):
+    def desconto_simples():
         raise NotImplementedError("Método desconto simples não implementado")
 
     @abstractmethod
-    def valor_presente(self):
+    def valor_presente():
         raise NotImplementedError("Método valor presente não implementado")
 
     @abstractmethod
-    def valor_futuro(self):
+    def valor_futuro():
         raise NotImplementedError("Método valor futuro não implementado")
 
     @abstractmethod
-    def margem_de_lucro(self):
+    def margem_de_lucro():
         raise NotImplementedError("Método margem de luvro não implementado")
 
     @abstractmethod
-    def custo_total(self):
+    def custo_total():
         raise NotImplementedError("Método custo total não implementado")
     
     @abstractmethod
-    def depreciacao_linear(self):
+    def depreciacao_linear():
         raise NotImplementedError("Método depreciação linear não implementado")
     
     @abstractmethod
-    def ponto_de_equilibrio(self):
+    async def ponto_de_equilibrio():
         raise NotImplementedError("Método ponto de equilibrio não implementado")
     
     @abstractmethod
-    def liquidez_corrente(self):
+    def liquidez_corrente():
         raise NotImplementedError("Método liquidez corrente não implementado")
