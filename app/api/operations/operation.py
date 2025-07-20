@@ -1,4 +1,5 @@
-from interface_operations import Interface
+
+from .interface_operations import Interface
 
 class OperationsContabil(Interface):
     """
@@ -216,4 +217,21 @@ class OperationsContabil(Interface):
         
         except Exception as e:
             return "Error calculo (liquidez corrente)", e
-        
+
+
+
+if __name__ == '__main__':
+    async def testeopartions():
+        print(f'juros simples: { await OperationsContabil.juros_simples(1000, 5, 4)}') # 200
+        print(f'juros compostos: { await OperationsContabil.juros_compostos(1000, 5, 4)}') # 215,51
+        print(f'desconto simples: { await OperationsContabil.desconto_simples(1200, 2, 3)}') # 72,00
+        print(f'valor presente: {await OperationsContabil.valor_presente(2000, 10, 3)}') # 1503,76
+        print(f'valor futuro: {await OperationsContabil.valor_futuro(1500, 10, 3)}') #1996,50
+        print(f'margem de lucro: {await OperationsContabil.margem_de_lucro(150, 500)}') # 30%
+        print(f'custo total: {await OperationsContabil.custo_total(5000, 4000)}') # 9000
+        print(f'depreciação linear: {await OperationsContabil.depreciacao_linear(50000, 5000, 5)}') # 9000/ano
+        print(f'ponto de equilibrio: {await OperationsContabil.ponto_de_equilibrio(10000, 100, 60)}') #250 unidades
+        print(f'liquidez corrente: {await OperationsContabil.liquidez_corrente(80.000, 50.000)}') # 1,6
+        return
+
+

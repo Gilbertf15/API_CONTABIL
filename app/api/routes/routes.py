@@ -1,13 +1,13 @@
 from fastapi import APIRouter
-from operations.operation import OperationsContabil
+from ..operations.operation import OperationsContabil
 
 
 class RouterContabil(APIRouter):
-    def __init__(self, prefix = "calculos"):
+    def __init__(self, prefix = ""):
         super().__init__(prefix=prefix,)
 
 
-routercontabil = RouterContabil()
+routercontabil = RouterContabil("/calculos")
 
 @routercontabil.post("/juros_simples/{c}/{i}/{t}")
 async def rota_juros_simples(c: int | float, i: int | float, t: int | float):
