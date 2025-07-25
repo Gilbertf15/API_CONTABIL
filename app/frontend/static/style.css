@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: #282a36;
+  height: 100vh;
+}
+
+h2,
+p {
+  justify-content: center;
+  align-items: center;
+
+  color: #fff;
+}
+
+main {
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  width: 500px;
+}
+
+nav {
+  border: 2px solid #947493;
+}
