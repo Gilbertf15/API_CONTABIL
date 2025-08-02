@@ -1,5 +1,7 @@
 from fastapi import APIRouter
 from ..operations.operation import OperationsContabil
+from fastapi import status
+from fastapi.responses import JSONResponse
 
 
 class RouterContabil(APIRouter):
@@ -23,7 +25,13 @@ async def rota_juros_simples(c: int | float, i: int | float, t: int | float):
     """
     
     resultado_juros_simples = await OperationsContabil.juros_simples(c, i, t)
-    return resultado_juros_simples
+    return JSONResponse(
+        content={
+            'status': status.HTTP_200_OK,
+            'message': resultado_juros_simples},
+            status_code=status.HTTP_200_OK
+        
+    )
 
 
 @routercontabil.post("/juros_compostos/{c}/{i}/{t}")
@@ -39,7 +47,14 @@ async def rota_juros_compostos(c: int | float, i: int | float, t: int | float):
         _type_: _description_
     """
     resultado_juros_compostos = await OperationsContabil.juros_compostos(c, i, t)
-    return resultado_juros_compostos
+    return JSONResponse(
+        content={
+            'status': status.HTTP_200_OK,
+            'message': resultado_juros_compostos,
+           
+        },
+        status_code=status.HTTP_200_OK
+    )
 
 
 @routercontabil.post("/valor_presente/{VF}/{i}/{n}")
@@ -55,7 +70,14 @@ async def rota_valor_presente(VF: int | float, i: int | float, n: int | float):
         _type_: _description_
     """
     resultado_valor_presente = await OperationsContabil.valor_presente(VF, i, n)
-    return resultado_valor_presente
+    return JSONResponse(
+        content={
+            'status': status.HTTP_200_OK,
+            'message': resultado_valor_presente,
+           
+        },
+        status_code=status.HTTP_200_OK
+    )
 
 @routercontabil.post("/valor_futuro/{VP}/{i}/{n}")
 async def rota_valor_futuro(VP: int | float, i: int | float, n: int | float ):
@@ -70,7 +92,14 @@ async def rota_valor_futuro(VP: int | float, i: int | float, n: int | float ):
         _type_: _description_
     """
     resultado_valor_futuro = await OperationsContabil.valor_futuro(VP, i, n)
-    return resultado_valor_futuro
+    return JSONResponse(
+        content={
+            'status': status.HTTP_200_OK,
+            'message': resultado_valor_futuro,
+           
+        },
+        status_code=status.HTTP_200_OK
+    )
 
 @routercontabil.post("/margem_de_lucro/{lucro}/{receita}")
 async def rota_margem_lucro(lucro: int | float, receita: int | float):
@@ -84,7 +113,14 @@ async def rota_margem_lucro(lucro: int | float, receita: int | float):
         _type_: _description_
     """
     resultado_margem_lucro = await OperationsContabil.margem_de_lucro(lucro, receita)
-    return resultado_margem_lucro
+    return JSONResponse(
+        content={
+            'status': status.HTTP_200_OK,
+            'message': resultado_margem_lucro,
+           
+        },
+        status_code=status.HTTP_200_OK
+    )
 
 @routercontabil.post("/custo_total/{VF}/{custo_v}")
 async def rota_custo_total(CF: int | float, custo_v: int | float):
@@ -98,7 +134,14 @@ async def rota_custo_total(CF: int | float, custo_v: int | float):
         _type_: _description_
     """
     resultado_custo_total = await OperationsContabil.custo_total(CF, custo_v)
-    return resultado_custo_total
+    return JSONResponse(
+        content={
+            'status': status.HTTP_200_OK,
+            'message': resultado_custo_total,
+           
+        },
+        status_code=status.HTTP_200_OK
+    )
 
 @routercontabil.post("/depreciacao_linear/{valor_aquisitivo}/{valor_residual}")
 async def rota_depreciacao_linear(valor_aquisitivo: int | float, valor_residual:int | float):
@@ -112,7 +155,14 @@ async def rota_depreciacao_linear(valor_aquisitivo: int | float, valor_residual:
         _type_: _description_
     """
     resultado_depreciacao_linear = await OperationsContabil.depreciacao_linear(valor_aquisitivo, valor_residual)
-    return resultado_depreciacao_linear
+    return JSONResponse(
+        content={
+            'status': status.HTTP_200_OK,
+            'message': resultado_depreciacao_linear,
+           
+        },
+        status_code=status.HTTP_200_OK
+    )
 
 @routercontabil.post("/ponto_equilibrio/{cf}/{pv}/{custo_v}")
 async def rota_ponto_equilibrio(cf: int | float, pv: int | float, custo_v: int | float):
@@ -127,7 +177,14 @@ async def rota_ponto_equilibrio(cf: int | float, pv: int | float, custo_v: int |
         _type_: _description_
     """
     resultado_ponto_equilibrio = await OperationsContabil.ponto_de_equilibrio(cf, pv, custo_v)
-    return resultado_ponto_equilibrio
+    return JSONResponse(
+        content={
+            'status': status.HTTP_200_OK,
+            'message': resultado_ponto_equilibrio,
+           
+        },
+        status_code=status.HTTP_200_OK
+    )
 
 @routercontabil.post("/liquidez_corrente/{ativo_circulante}/{passivo_circulante}")
 async def rota_liquidez_corrente(ativo_circulante: int | float, passivo_circulante: int | float):
@@ -141,4 +198,11 @@ async def rota_liquidez_corrente(ativo_circulante: int | float, passivo_circulan
         _type_: _description_
     """
     resultado_liquidez_corrente = await OperationsContabil.liquidez_corrente(ativo_circulante, passivo_circulante)
-    return resultado_liquidez_corrente
+    return JSONResponse(
+        content={
+            'status': status.HTTP_200_OK,
+            'message': resultado_liquidez_corrente,
+           
+        },
+        status_code=status.HTTP_200_OK
+    )
